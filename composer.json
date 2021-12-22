@@ -50,7 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MichaelRubel\\ModelMapper\\BindingServiceProvider"
+                "MichaelRubel\\ModelMapper\\ModelMapperServiceProvider"
             ]
         }
     },
