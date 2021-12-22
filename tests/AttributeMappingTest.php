@@ -13,22 +13,22 @@ class AttributeMappingTest extends TestCase
     /**
      * @var bool
      */
-    protected bool $test;
+    public bool $test;
 
     /**
      * @var string
      */
-    protected string $name;
+    public string $name;
 
     /**
      * @var mixed
      */
-    protected object $files;
+    public object $files;
 
     /**
      * @var \Closure|null
      */
-    protected ?\Closure $default = null;
+    public ?\Closure $default = null;
 
     /** @test */
     public function testMapsAttributesToClassPropertiesCorrectly()
