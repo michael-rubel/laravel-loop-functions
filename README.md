@@ -1,3 +1,5 @@
+![Laravel Model Mapper](https://user-images.githubusercontent.com/37669560/147101154-e70d8648-ffa3-48c6-b9a8-6a072b7c1f00.png)
+
 # Laravel Model-Property Mapper
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-model-mapper)
 [![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-model-mapper)
@@ -5,6 +7,8 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-model-mapper/?branch=main)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-model-mapper/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-model-mapper/actions)
 [![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-model-mapper/phpstan/main?style=flat-square&label=larastan&logo=laravel)](https://github.com/michael-rubel/laravel-model-mapper/actions)
+
+This package provides functionality to map your model attributes to local class properties with the same names.
 
 The package requires PHP `^8.x` and Laravel `^8.67`.
 
@@ -16,6 +20,43 @@ The package requires PHP `^8.x` and Laravel `^8.67`.
 Install the package using composer:
 ```bash
 composer require michael-rubel/laravel-model-mapper
+```
+
+## Usage
+```php
+use WithModelMapping;
+```
+
+Then in constructor or any other method:
+```php
+$this->mapModelAttributes($model);
+```
+
+This is especially handy with Livewire components when you want to map your model data to the view.
+
+For example:
+```php
+class CompanyProfile extends Component
+{
+    use WithModelMapping;
+
+    /**
+     * Frontend properties.
+     *
+     * @var string|null
+     */
+    public ?string $name;
+    public ?string $tax_number;
+    public ?string $address;
+
+    /**
+     * @return void
+     */
+    public function mount(Company $company): void
+    {
+        $this->mapModelAttributes($company);
+    }
+}
 ```
 
 ## Testing
