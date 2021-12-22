@@ -8,7 +8,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-model-mapper/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-model-mapper/actions)
 [![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-model-mapper/phpstan/main?style=flat-square&label=larastan&logo=laravel)](https://github.com/michael-rubel/laravel-model-mapper/actions)
 
-This package provides functionality to map your model attributes to local class properties that have the same names.
+This package provides functionality to map your model attributes to local class properties with the same names.
 
 The package requires PHP `^8.x` and Laravel `^8.67`.
 
@@ -25,7 +25,10 @@ composer require michael-rubel/laravel-model-mapper
 ## Usage
 ```php
 use WithModelMapping;
+```
 
+Then in constructor or any other method:
+```php
 $this->mapModelAttributes($model);
 ```
 
