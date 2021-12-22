@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Coding Standards">
+<ruleset name="Laravel Standards">
 
     <!--
        The name attribute of the ruleset tag is displayed
@@ -8,7 +8,7 @@
        except in this file, so it can contain information for
        developers who may change this file in the future.
     -->
-    <description>Coding Standards</description>
+    <description>The Laravel Coding Standards</description>
 
     <!--
     If no files or directories are specified on the command line
@@ -19,7 +19,6 @@
     on the command line will ignore all file tags.
     -->
     <file>src</file>
-    <file>config</file>
     <file>tests</file>
 
     <!--
@@ -45,7 +44,6 @@
        The following tags are equivalent to the command line arguments:
        -p
     -->
-    <arg name="standard" value="PSR2"/>
     <arg name="report" value="full"/>
     <arg name="colors"/>
     <arg value="p"/>
@@ -55,4 +53,14 @@
        The following tag sets the memory limit to 64M.
     -->
     <ini name="memory_limit" value="128M"/>
+
+    <!--
+       Include all sniffs in the PEAR standard. Note that the
+       path to the standard does not have to be specified as the
+       PEAR standard exists inside the PHP_CodeSniffer install
+       directory.
+    -->
+    <rule ref="PSR2">
+        <exclude name="Generic.Files.LineLength"/>
+    </rule>
 </ruleset>
