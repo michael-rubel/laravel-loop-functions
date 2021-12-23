@@ -11,16 +11,18 @@ trait WithModelMapping
     /**
      * Maps your model attributes to local class properties.
      *
-     * @param Model $model
+     * @param Model|null $model
      *
      * @return void
      */
-    public function mapModelAttributes(Model $model): void
+    public function mapModelAttributes(?Model $model = null): void
     {
-        collect($model->getAttributes())->each(function ($value, $property) {
-            if (property_exists($this, $property)) {
-                rescue(fn () => $this->{$property} = $value);
-            }
-        });
+        if (! is_null($model)) {
+            collect($model->getAttributes())->each(function ($value, $property) {
+                if (property_exists($this, $property)) {
+                    rescue(fn () => $this->{$property} = $value);
+                }
+            });
+        }
     }
 }
