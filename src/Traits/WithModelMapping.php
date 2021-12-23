@@ -20,7 +20,11 @@ trait WithModelMapping
         if (! is_null($model)) {
             collect($model->getAttributes())->each(function ($value, $property) use ($model) {
                 if (property_exists($this, $property)) {
-                    rescue(fn () => $this->{$property} = $model->{$property});
+                    rescue(
+                        fn () => $this->{$property} = $model->{$property},
+                        fn () => null,
+                        config('model-mapper.log') ?? false
+                    );
                 }
             });
         }
