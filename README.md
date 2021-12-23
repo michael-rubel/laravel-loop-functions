@@ -50,7 +50,7 @@ class CompanyProfile extends Component
     public ?string $address    = null;
 
     /**
-     * @param Company $company 
+     * @param \App\Models\Company $company 
      *
      * @return void
      */
