@@ -10,25 +10,12 @@ class AttributeMappingTest extends TestCase
 {
     use WithModelMapping;
 
-    /**
-     * @var bool
-     */
+    public int $id;
     public bool $test;
-
-    /**
-     * @var string
-     */
     public string $name;
-
-    /**
-     * @var mixed
-     */
     public object $files;
-
-    /**
-     * @var \Closure|null
-     */
     public ?\Closure $default = null;
+    public ?Collection $collection = null;
 
     /** @test */
     public function testMapsAttributesToClassPropertiesCorrectly()
@@ -42,6 +29,7 @@ class AttributeMappingTest extends TestCase
 
         $this->mapModelAttributes($model);
 
+        $this->assertIsInt($this->id);
         $this->assertTrue($this->test);
         $this->assertIsString($this->name);
         $this->assertStringContainsString('mapped', $this->name);
@@ -66,5 +54,18 @@ class AttributeMappingTest extends TestCase
 
         $this->assertInstanceOf(\Closure::class, $this->default);
         $this->assertTrue(($this->default)());
+    }
+
+    /** @test */
+    public function testMappingWorksWithCollections()
+    {
+        $model = new TestModel([
+            'id'         => 1,
+            'collection' => new Collection(),
+        ]);
+
+        $this->mapModelAttributes($model);
+
+        $this->assertInstanceOf(Collection::class, $this->collection);
     }
 }
