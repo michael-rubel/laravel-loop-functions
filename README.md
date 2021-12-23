@@ -62,8 +62,14 @@ class CompanyProfile extends Component
 ```
 
 ## Why?
-Why should I use it like this instead of just passing the model to the view?
-Because the models are huge objects and you probably shouldn't expose them to the frontend for security and performance reasons. Another thing is primitive view variables are highly customizable through view composers, while it's harder to decorate in the case of using models.
+Why should I use it like this instead of just passing the model to the view? It's because the models are huge objects and you probably shouldn't expose them to the frontend for security and performance reasons. Another thing is primitive view variables are highly customizable through view composers, while it's harder to decorate in the case of using models.
+
+## Logging
+As the package doesn't throw an error in case of failed assignment (for example type incompatibility), you may wish to log such an event. The package has failed assignment logging disabled by default, but you can turn it on by publishing the config:
+
+```bash
+php artisan vendor:publish --tag="model-mapper-config"
+```
 
 ## Testing
 ```bash
