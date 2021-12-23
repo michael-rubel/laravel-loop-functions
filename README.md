@@ -50,6 +50,8 @@ class CompanyProfile extends Component
     public ?string $address    = null;
 
     /**
+     * @param Company $company 
+     *
      * @return void
      */
     public function mount(Company $company): void
