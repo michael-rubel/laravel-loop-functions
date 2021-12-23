@@ -45,9 +45,9 @@ class CompanyProfile extends Component
      *
      * @var string|null
      */
-    public ?string $name;
-    public ?string $tax_number;
-    public ?string $address;
+    public ?string $name       = null;
+    public ?string $tax_number = null;
+    public ?string $address    = null;
 
     /**
      * @return void
@@ -58,6 +58,10 @@ class CompanyProfile extends Component
     }
 }
 ```
+
+## Why?
+Why should I use it like this instead of just passing the model to the view?
+Because the models are huge objects and you probably shouldn't expose them to the frontend for security and performance reasons. Another thing is primitive view variables are highly customizable through view composers, while it's harder to decorate in the case of using models.
 
 ## Testing
 ```bash
