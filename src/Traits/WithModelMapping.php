@@ -18,9 +18,9 @@ trait WithModelMapping
     public function mapModelAttributes(?Model $model = null): void
     {
         if (! is_null($model)) {
-            collect($model->getAttributes())->each(function ($value, $property) {
+            collect($model->getAttributes())->each(function ($value, $property) use ($model) {
                 if (property_exists($this, $property)) {
-                    rescue(fn () => $this->{$property} = $value);
+                    rescue(fn () => $this->{$property} = $model->{$property});
                 }
             });
         }
