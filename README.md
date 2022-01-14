@@ -10,10 +10,10 @@
 
 This package provides functionality to map your model attributes to local class properties with the same names.
 
-The package requires PHP `^8.x` and Laravel `^8.67`.
+The package requires PHP `^8.x` and Laravel `^8.71`.
 
 [![PHP Version](https://img.shields.io/badge/php-^8.x-777BB4?style=flat-square&logo=php)](https://php.net)
-[![Laravel Version](https://img.shields.io/badge/laravel-^8.67-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
+[![Laravel Version](https://img.shields.io/badge/laravel-^8.71-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
 [![Laravel Octane Compatible](https://img.shields.io/badge/octane-compatible-success?style=flat-square&logo=laravel)](https://github.com/laravel/octane)
 
 ## Installation
