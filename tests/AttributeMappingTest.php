@@ -10,7 +10,6 @@ class AttributeMappingTest extends TestCase
 {
     use WithModelMapping;
 
-    public int $id;
     public bool $test;
     public string $name;
     public object $files;
@@ -31,7 +30,6 @@ class AttributeMappingTest extends TestCase
 
         $this->mapModelAttributes($model);
 
-        $this->assertIsInt($this->id);
         $this->assertTrue($this->test);
         $this->assertIsString($this->name);
         $this->assertStringContainsString('mapped', $this->name);
