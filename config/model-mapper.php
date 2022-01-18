@@ -15,7 +15,7 @@ return [
 
     /*
     |
-    | Determine if you want to log failed assignments.
+    | Determine if you want to ignore some attributes.
     |
     */
 
