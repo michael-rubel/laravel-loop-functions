@@ -18,8 +18,14 @@ trait WithModelMapping
     public function mapModelAttributes(?Model $model = null): void
     {
         if (! is_null($model)) {
+            $toIgnore = config('model-mapper.ignore_attributes');
+
+            $ignores = is_array($toIgnore)
+                ? $toIgnore
+                : [];
+
             collect($model->getAttributes())
-                ->except('id', 'password')
+                ->except(...$ignores)
                 ->each(function ($value, $property) use ($model) {
                     if (property_exists($this, $property)) {
                         rescue(

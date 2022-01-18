@@ -13,4 +13,12 @@ return [
 
     'log' => true,
 
+    /*
+    |
+    | Determine if you want to log failed assignments.
+    |
+    */
+
+    'ignore_attributes' => ['id', 'password'],
+
 ];
