@@ -19,7 +19,7 @@ trait WithModelMapping
     {
         if (! is_null($model)) {
             collect($model->getAttributes())
-                ->except('id')
+                ->except('id', 'password')
                 ->each(function ($value, $property) use ($model) {
                     if (property_exists($this, $property)) {
                         rescue(
