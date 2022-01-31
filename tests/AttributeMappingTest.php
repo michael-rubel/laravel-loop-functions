@@ -10,8 +10,10 @@ class AttributeMappingTest extends TestCase
 {
     use WithModelMapping;
 
+    public int $id;
     public bool $test;
     public string $name;
+    public string $password;
     public object $files;
 
     public ?\Closure   $default     = null;
@@ -84,5 +86,39 @@ class AttributeMappingTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $this->collection);
         $this->assertIsString($this->intAsString);
+    }
+
+    /** @test */
+    public function testIdAndPasswordIsIgnored()
+    {
+        $model = new TestModel([
+            'id'       => 1,
+            'password' => 'hash',
+            'test'     => true,
+        ]);
+
+        $this->mapModelAttributes($model);
+
+        $this->assertTrue($this->test);
+        $this->assertFalse((new \ReflectionProperty($this, 'id'))->isInitialized($this));
+        $this->assertFalse((new \ReflectionProperty($this, 'password'))->isInitialized($this));
+    }
+
+    /** @test */
+    public function testSetsDefaultValueWithWrongConfig()
+    {
+        config(['model-mapper.ignore_attributes' => 123]);
+
+        $model = new TestModel([
+            'id'       => 1,
+            'password' => 'hash',
+            'test'     => true,
+        ]);
+
+        $this->mapModelAttributes($model);
+
+        $this->assertTrue($this->test);
+        $this->assertFalse((new \ReflectionProperty($this, 'id'))->isInitialized($this));
+        $this->assertFalse((new \ReflectionProperty($this, 'password'))->isInitialized($this));
     }
 }
