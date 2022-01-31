@@ -22,7 +22,7 @@ trait WithModelMapping
 
             $ignores = is_array($toIgnore)
                 ? $toIgnore
-                : ['id'];
+                : ['id', 'password'];
 
             collect($model->getAttributes())
                 ->except($ignores)
