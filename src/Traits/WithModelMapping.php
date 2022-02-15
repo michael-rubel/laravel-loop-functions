@@ -27,7 +27,7 @@ trait WithModelMapping
 
             collect($model->getAttributes())
                 ->except($ignores)
-                ->each(function ($value, $property) use ($model,  $rescue) {
+                ->each(function ($value, $property) use ($model, $rescue) {
                     if (property_exists($this, $property)) {
                         rescue(
                             fn () => $this->{$property} = $model->{$property},
