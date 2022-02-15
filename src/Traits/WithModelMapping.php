@@ -11,12 +11,12 @@ trait WithModelMapping
     /**
      * Maps your model attributes to local class properties.
      *
-     * @param Model|null    $model
-     * @param \Closure|null $failure
+     * @param Model|null $model
+     * @param mixed      $failure
      *
      * @return void
      */
-    public function mapModelAttributes(?Model $model = null, ?\Closure $failure = null): void
+    public function mapModelAttributes(?Model $model = null, mixed $failure = null): void
     {
         if (! is_null($model)) {
             $toIgnore = config('model-mapper.ignore_attributes');
