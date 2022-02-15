@@ -42,14 +42,14 @@ trait WithModelMapping
     /**
      * Map array data to class properties.
      *
-     * @param array      $data
+     * @param array|null $data
      * @param mixed|null $rescue
      *
      * @return void
      */
-    public function arrayToProperties(array $data, mixed $rescue = null): void
+    public function arrayToProperties(?array $data, mixed $rescue = null): void
     {
-        collect($data)->each(function ($value, $key) use ($rescue) {
+        collect($data ?? [])->each(function ($value, $key) use ($rescue) {
             if (property_exists($this, $key)) {
                 rescue(
                     fn () => $this->{$key} = $value,
