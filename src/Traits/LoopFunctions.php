@@ -64,13 +64,13 @@ trait LoopFunctions
     /**
      * Assign the value to the property or rescue.
      *
-     * @param string     $key
+     * @param int|string $key
      * @param mixed      $value
      * @param mixed|null $rescue
      *
      * @return void
      */
-    private function assignValue(string $key, mixed $value, mixed $rescue = null): void
+    private function assignValue(int|string $key, mixed $value, mixed $rescue = null): void
     {
         if (property_exists($this, $key)) {
             rescue(
