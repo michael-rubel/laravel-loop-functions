@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MichaelRubel\ModelMapper\Traits;
+namespace MichaelRubel\LoopFunctions\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 
-trait WithModelMapping
+trait WithLoopFunctions
 {
     /**
      * Maps your model attributes to local class properties.
@@ -16,10 +16,10 @@ trait WithModelMapping
      *
      * @return void
      */
-    public function mapModelAttributes(?Model $model = null, mixed $rescue = null): void
+    public function attributesToProperties(?Model $model = null, mixed $rescue = null): void
     {
         if (! is_null($model)) {
-            $toIgnore = config('model-mapper.ignore_attributes');
+            $toIgnore = config('loop-functions.ignore_attributes');
 
             $ignores = is_array($toIgnore)
                 ? $toIgnore
@@ -32,7 +32,7 @@ trait WithModelMapping
                         rescue(
                             fn () => $this->{$property} = $model->{$property},
                             $rescue,
-                            config('model-mapper.log') ?? false
+                            config('loop-functions.log') ?? false
                         );
                     }
                 });
@@ -54,7 +54,7 @@ trait WithModelMapping
                 rescue(
                     fn () => $this->{$key} = $value,
                     $rescue,
-                    config('model-mapper.log') ?? false
+                    config('loop-functions.log') ?? false
                 );
             }
         });

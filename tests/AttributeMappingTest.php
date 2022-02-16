@@ -1,14 +1,14 @@
 <?php
 
-namespace MichaelRubel\ModelMapper\Tests;
+namespace MichaelRubel\LoopFunctions\Tests;
 
 use Illuminate\Support\Collection;
-use MichaelRubel\ModelMapper\Tests\Boilerplate\TestModel;
-use MichaelRubel\ModelMapper\Traits\WithModelMapping;
+use MichaelRubel\LoopFunctions\Tests\Boilerplate\TestModel;
+use MichaelRubel\LoopFunctions\Traits\WithLoopFunctions;
 
 class AttributeMappingTest extends TestCase
 {
-    use WithModelMapping;
+    use WithLoopFunctions;
 
     public int $id;
     public bool $test;
@@ -30,7 +30,7 @@ class AttributeMappingTest extends TestCase
             'files' => collect('/img/src/screen.png'),
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
 
         $this->assertTrue($this->test);
         $this->assertIsString($this->name);
@@ -49,7 +49,7 @@ class AttributeMappingTest extends TestCase
             'default' => fn () => true,
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
 
         $this->assertFalse((new \ReflectionProperty($this, 'name'))->isInitialized($this));
         $this->assertFalse((new \ReflectionProperty($this, 'files'))->isInitialized($this));
@@ -66,7 +66,7 @@ class AttributeMappingTest extends TestCase
             'collection' => new Collection(),
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
 
         $this->assertInstanceOf(Collection::class, $this->collection);
     }
@@ -82,7 +82,7 @@ class AttributeMappingTest extends TestCase
             'intAsString' => 100,
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
 
         $this->assertInstanceOf(Collection::class, $this->collection);
         $this->assertIsString($this->intAsString);
@@ -97,7 +97,7 @@ class AttributeMappingTest extends TestCase
             'test'     => true,
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
 
         $this->assertTrue($this->test);
         $this->assertFalse((new \ReflectionProperty($this, 'id'))->isInitialized($this));
@@ -107,7 +107,7 @@ class AttributeMappingTest extends TestCase
     /** @test */
     public function testSetsDefaultValueWithWrongConfig()
     {
-        config(['model-mapper.ignore_attributes' => 123]);
+        config(['loop-functions.ignore_attributes' => 123]);
 
         $model = new TestModel([
             'id'       => 1,
@@ -115,7 +115,7 @@ class AttributeMappingTest extends TestCase
             'test'     => true,
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
 
         $this->assertTrue($this->test);
         $this->assertFalse((new \ReflectionProperty($this, 'id'))->isInitialized($this));

@@ -1,12 +1,12 @@
 {
-    "name": "michael-rubel/laravel-model-mapper",
-    "description": "Map your model attributes to class properties with ease.",
+    "name": "michael-rubel/laravel-loop-functions",
+    "description": "Collection of functions to loop over your data.",
     "keywords": [
         "michael-rubel",
         "laravel",
-        "laravel-model-mapper"
+        "laravel-loop-functions"
     ],
-    "homepage": "https://github.com/michael-rubel/laravel-model-mapper",
+    "homepage": "https://github.com/michael-rubel/laravel-loop-functions",
     "license": "MIT",
     "authors": [
         {
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MichaelRubel\\ModelMapper\\": "src"
+            "MichaelRubel\\LoopFunctions\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MichaelRubel\\ModelMapper\\Tests\\": "tests"
+            "MichaelRubel\\LoopFunctions\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,7 +49,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MichaelRubel\\ModelMapper\\ModelMapperServiceProvider"
+                "MichaelRubel\\LoopFunctions\\LoopFunctionServiceProvider"
             ]
         }
     },

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MichaelRubel\ModelMapper;
+namespace MichaelRubel\LoopFunctions;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class ModelMapperServiceProvider extends PackageServiceProvider
+class LoopFunctionServiceProvider extends PackageServiceProvider
 {
     /**
      * Configure the package.
@@ -19,7 +19,7 @@ class ModelMapperServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-model-mapper')
+            ->name('laravel-loop-functions')
             ->hasConfigFile();
     }
 }

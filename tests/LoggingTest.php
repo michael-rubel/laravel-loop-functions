@@ -1,14 +1,14 @@
 <?php
 
-namespace MichaelRubel\ModelMapper\Tests;
+namespace MichaelRubel\LoopFunctions\Tests;
 
 use Illuminate\Support\Facades\Log;
-use MichaelRubel\ModelMapper\Tests\Boilerplate\TestModel;
-use MichaelRubel\ModelMapper\Traits\WithModelMapping;
+use MichaelRubel\LoopFunctions\Tests\Boilerplate\TestModel;
+use MichaelRubel\LoopFunctions\Traits\WithLoopFunctions;
 
 class LoggingTest extends TestCase
 {
-    use WithModelMapping;
+    use WithLoopFunctions;
 
     public int $number;
 
@@ -25,13 +25,13 @@ class LoggingTest extends TestCase
             'number' => false,
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
     }
 
     /** @test */
     public function testMapperDoesntLogIfDisabled()
     {
-        config(['model-mapper.log' => false]);
+        config(['loop-functions.log' => false]);
 
         Log::shouldReceive('error')->never();
 
@@ -39,6 +39,6 @@ class LoggingTest extends TestCase
             'number' => false,
         ]);
 
-        $this->mapModelAttributes($model);
+        $this->attributesToProperties($model);
     }
 }

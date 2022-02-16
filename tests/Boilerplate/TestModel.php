@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelRubel\ModelMapper\Tests\Boilerplate;
+namespace MichaelRubel\LoopFunctions\Tests\Boilerplate;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Model;

@@ -1,12 +1,12 @@
 <?php
 
-namespace MichaelRubel\ModelMapper\Tests;
+namespace MichaelRubel\LoopFunctions\Tests;
 
-use MichaelRubel\ModelMapper\Traits\WithModelMapping;
+use MichaelRubel\LoopFunctions\Traits\WithLoopFunctions;
 
 class ArrayMappingTest extends TestCase
 {
-    use WithModelMapping;
+    use WithLoopFunctions;
 
     public bool $test;
     public string $name;

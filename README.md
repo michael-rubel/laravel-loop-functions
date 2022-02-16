@@ -1,14 +1,12 @@
-![Laravel Model Mapper](https://user-images.githubusercontent.com/37669560/147101154-e70d8648-ffa3-48c6-b9a8-6a072b7c1f00.png)
+# Laravel Loop Functions
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-loop-functions)
+[![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-loop-functions)
+[![Code Quality](https://img.shields.io/scrutinizer/quality/g/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-loop-functions/?branch=main)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-loop-functions/?branch=main)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-loop-functions/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-loop-functions/actions)
+[![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-loop-functions/phpstan/main?style=flat-square&label=larastan&logo=laravel)](https://github.com/michael-rubel/laravel-loop-functions/actions)
 
-# Laravel Model-Property Mapper
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-model-mapper)
-[![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-model-mapper)
-[![Code Quality](https://img.shields.io/scrutinizer/quality/g/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-model-mapper/?branch=main)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/michael-rubel/laravel-model-mapper.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-model-mapper/?branch=main)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-model-mapper/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-model-mapper/actions)
-[![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-model-mapper/phpstan/main?style=flat-square&label=larastan&logo=laravel)](https://github.com/michael-rubel/laravel-model-mapper/actions)
-
-This package provides functionality to map your model attributes to local class properties with the same names.
+Collection of functions to loop over your data.
 
 The package requires PHP `^8.x` and Laravel `^8.71`.
 
@@ -19,56 +17,30 @@ The package requires PHP `^8.x` and Laravel `^8.71`.
 ## Installation
 Install the package using composer:
 ```bash
-composer require michael-rubel/laravel-model-mapper
+composer require michael-rubel/laravel-loop-functions
 ```
 
 ## Usage
 ```php
-use WithModelMapping;
+use WithLoopFunctions;
 ```
 
-Then in constructor or any other method:
+## Available methods
+Assign Eloquent model attributes to class properties:
 ```php
-$this->mapModelAttributes($model);
+$this->attributesToProperties($model);
 ```
 
-This is especially handy with Livewire components when you want to map your model data to the view.
-
-For example:
+Assign array key values to class properties:
 ```php
-class CompanyProfile extends Component
-{
-    use WithModelMapping;
-
-    /**
-     * Frontend properties.
-     *
-     * @var string|null
-     */
-    public ?string $name       = null;
-    public ?string $tax_number = null;
-    public ?string $address    = null;
-
-    /**
-     * @param \App\Models\Company $company 
-     *
-     * @return void
-     */
-    public function mount(Company $company): void
-    {
-        $this->mapModelAttributes($company);
-    }
-}
+$this->arrayToProperties($data);
 ```
-
-## Why?
-Why should I use it like this instead of just passing the model to the view? It's because the models are huge objects and you probably shouldn't expose them to the frontend for security and performance reasons. Another thing is primitive view variables are highly customizable through view composers, while it's harder to decorate in the case of using models.
 
 ## Logging
 As the package doesn't throw an error in case of failed assignment (for example type incompatibility), you may wish to log such an event. The package has failed assignment logging disabled by default, but you can turn it on by publishing the config:
 
 ```bash
-php artisan vendor:publish --tag="model-mapper-config"
+php artisan vendor:publish --tag="loop-functions-config"
 ```
 
 ## Testing

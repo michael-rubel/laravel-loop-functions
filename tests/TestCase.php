@@ -1,8 +1,8 @@
 <?php
 
-namespace MichaelRubel\ModelMapper\Tests;
+namespace MichaelRubel\LoopFunctions\Tests;
 
-use MichaelRubel\ModelMapper\ModelMapperServiceProvider;
+use MichaelRubel\LoopFunctions\LoopFunctionServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -15,7 +15,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            ModelMapperServiceProvider::class,
+            LoopFunctionServiceProvider::class,
         ];
     }
 
