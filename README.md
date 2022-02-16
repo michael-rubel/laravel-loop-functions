@@ -1,3 +1,5 @@
+![Laravel Loop Functions](https://user-images.githubusercontent.com/37669560/154233514-72078240-d8c5-4b71-acc0-9e3afe5e52e2.png)
+
 # Laravel Loop Functions
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-loop-functions)
 [![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-loop-functions)
@@ -6,7 +8,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-loop-functions/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-loop-functions/actions)
 [![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-loop-functions/phpstan/main?style=flat-square&label=larastan&logo=laravel)](https://github.com/michael-rubel/laravel-loop-functions/actions)
 
-Collection of functions to loop over your data.
+The package provides the collection of methods to loop over your data.
 
 The package requires PHP `^8.x` and Laravel `^8.71`.
 
