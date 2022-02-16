@@ -2,6 +2,8 @@
 
 namespace MichaelRubel\LoopFunctions\Tests;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Collection;
 use MichaelRubel\LoopFunctions\Traits\LoopFunctions;
 
 class ArrayMappingTest extends TestCase
@@ -13,6 +15,8 @@ class ArrayMappingTest extends TestCase
     public ?string $password = null;
     public string $next;
     public array $array = [];
+    public ?Collection $supportCollection = null;
+    public ?EloquentCollection $eloquentCollection = null;
 
     /** @test */
     public function testCanMapAnArrayToProperties()
@@ -80,5 +84,21 @@ class ArrayMappingTest extends TestCase
         $this->assertStringContainsString('Michael', $this->name);
         $this->assertArrayHasKey('test', $this->array);
         $this->assertTrue($this->array['test']);
+    }
+
+    /** @test */
+    public function testCollectionAssignmentIsOk()
+    {
+        $array = [
+            'supportCollection' => collect([
+                'test' => true,
+            ]),
+            'eloquentCollection' => new EloquentCollection(),
+        ];
+
+        $this->arrayToProperties($array);
+
+        $this->assertArrayHasKey('test', $this->supportCollection->toArray());
+        $this->assertTrue($this->supportCollection->toArray()['test']);
     }
 }

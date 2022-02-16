@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 trait LoopFunctions
 {
+    use HelpsLoopFunctions;
+
     /**
      * Maps your model attributes to local class properties.
      *
@@ -46,52 +48,11 @@ trait LoopFunctions
         collect($data ?? [])
             ->except($this->ignoreKeys())
             ->each(function ($value, $key) use ($rescue) {
-                $propertyType = rescue(
-                    callback: fn () => (
-                        new \ReflectionProperty($this, $key)
-                    )->getType()->getName(),
-                    report: false
-                );
-
-                if (is_array($value) && $propertyType !== 'array') {
+                if ($this->canWalkRecursively($value)) {
                     $this->arrayToProperties($value, $rescue);
                 }
 
                 $this->assignValue($key, $value, $rescue);
             });
-    }
-
-    /**
-     * Assign the value to the property or rescue.
-     *
-     * @param int|string $key
-     * @param mixed      $value
-     * @param mixed|null $rescue
-     *
-     * @return void
-     */
-    private function assignValue(int|string $key, mixed $value, mixed $rescue = null): void
-    {
-        if (is_string($key) && property_exists($this, $key)) {
-            rescue(
-                fn () => ! empty($this->{$key}) ?: $this->{$key} = $value,
-                $rescue,
-                config('loop-functions.log') ?? false
-            );
-        }
-    }
-
-    /**
-     * @return array
-     */
-    private function ignoreKeys(): array
-    {
-        $defaults = ['id', 'password'];
-
-        $ignores = config('loop-functions.ignore_keys', $defaults);
-
-        return is_array($ignores)
-            ? $ignores
-            : $defaults;
     }
 }
