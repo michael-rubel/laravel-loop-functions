@@ -11,6 +11,7 @@ class ArrayMappingTest extends TestCase
     public bool $test;
     public string $name;
     public ?string $password = null;
+    public string $next;
 
     /** @test */
     public function testCanMapAnArrayToProperties()
@@ -26,5 +27,25 @@ class ArrayMappingTest extends TestCase
         $this->assertTrue($this->test);
         $this->assertStringContainsString('Michael', $this->name);
         $this->assertNull($this->password);
+    }
+
+    /** @test */
+    public function testCanMapAnArrayRecursively()
+    {
+        $array = [
+            'test'     => true,
+            'name'     => 'Michael Rubel',
+            'password' => 'p@$$w0rd',
+            'additional_data' => [
+                'next' => 'test',
+            ],
+        ];
+
+        $this->arrayToProperties($array);
+
+        $this->assertTrue($this->test);
+        $this->assertStringContainsString('Michael', $this->name);
+        $this->assertNull($this->password);
+        $this->assertStringContainsString('test', $this->next);
     }
 }
