@@ -25,7 +25,8 @@ trait LoopFunctions
             ->each(
                 fn ($value, $property) => $this->assignValue(
                     $property,
-                    $model->{$property}
+                    $model->{$property},
+                    $rescue
                 )
             );
     }
