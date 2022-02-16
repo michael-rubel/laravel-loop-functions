@@ -10,7 +10,7 @@ class ArrayMappingTest extends TestCase
 
     public bool $test;
     public string $name;
-    public string $password;
+    public ?string $password = null;
 
     /** @test */
     public function testCanMapAnArrayToProperties()
@@ -25,6 +25,6 @@ class ArrayMappingTest extends TestCase
 
         $this->assertTrue($this->test);
         $this->assertStringContainsString('Michael', $this->name);
-        $this->assertStringContainsString('$$', $this->password);
+        $this->assertNull($this->password);
     }
 }

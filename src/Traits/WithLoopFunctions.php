@@ -19,14 +19,8 @@ trait WithLoopFunctions
     public function attributesToProperties(?Model $model = null, mixed $rescue = null): void
     {
         if (! is_null($model)) {
-            $toIgnore = config('loop-functions.ignore_attributes');
-
-            $ignores = is_array($toIgnore)
-                ? $toIgnore
-                : ['id', 'password'];
-
             collect($model->getAttributes())
-                ->except($ignores)
+                ->except($this->ignoreKeys())
                 ->each(function ($value, $property) use ($model, $rescue) {
                     if (property_exists($this, $property)) {
                         rescue(
@@ -49,14 +43,48 @@ trait WithLoopFunctions
      */
     public function arrayToProperties(?array $data, mixed $rescue = null): void
     {
-        collect($data ?? [])->each(function ($value, $key) use ($rescue) {
-            if (property_exists($this, $key)) {
-                rescue(
-                    fn () => $this->{$key} = $value,
-                    $rescue,
-                    config('loop-functions.log') ?? false
-                );
-            }
-        });
+        collect($data ?? [])
+            ->except($this->ignoreKeys())
+            ->each(function ($value, $key) use ($rescue) {
+                if (is_array($key)) {
+                    $this->arrayToProperties($key, $rescue);
+                } else {
+                    $this->assignValue($key, $value, $rescue);
+                }
+            });
+    }
+
+    /**
+     * Assign the value to the property or rescue.
+     *
+     * @param string     $key
+     * @param mixed      $value
+     * @param mixed|null $rescue
+     *
+     * @return void
+     */
+    private function assignValue(string $key, mixed $value, mixed $rescue = null): void
+    {
+        if (property_exists($this, $key)) {
+            rescue(
+                fn () => $this->{$key} = $value,
+                $rescue,
+                config('loop-functions.log') ?? false
+            );
+        }
+    }
+
+    /**
+     * @return array
+     */
+    private function ignoreKeys(): array
+    {
+        $defaults = ['id', 'password'];
+
+        $ignores = config('loop-functions.ignore_keys', $defaults);
+
+        return is_array($ignores)
+            ? $ignores
+            : $defaults;
     }
 }

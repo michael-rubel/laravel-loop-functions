@@ -19,6 +19,6 @@ return [
     |
     */
 
-    'ignore_attributes' => ['id', 'password'],
+    'ignore_keys' => ['id', 'password'],
 
 ];
