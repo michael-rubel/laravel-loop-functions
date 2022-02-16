@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Model Mapper Configuration
+    | Loop Functions Configuration
     |--------------------------------------------------------------------------
     |
     | Determine if you want to log failed assignments.
