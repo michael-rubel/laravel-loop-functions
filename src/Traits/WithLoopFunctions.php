@@ -45,13 +45,11 @@ trait WithLoopFunctions
     {
         collect($data ?? [])
             ->except($this->ignoreKeys())
-            ->each(function ($value, $key) use ($rescue) {
-                if (is_array($key)) {
-                    $this->arrayToProperties($key, $rescue);
-                } else {
-                    $this->assignValue($key, $value, $rescue);
-                }
-            });
+            ->each(
+                fn ($value, $key) => is_array($key)
+                    ? $this->arrayToProperties($key, $rescue)
+                    : $this->assignValue($key, $value, $rescue)
+            );
     }
 
     /**
