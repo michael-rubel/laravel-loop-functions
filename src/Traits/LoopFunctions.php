@@ -45,11 +45,20 @@ trait LoopFunctions
     {
         collect($data ?? [])
             ->except($this->ignoreKeys())
-            ->each(
-                fn ($value, $key) => is_array($value)
-                    ? $this->arrayToProperties($value, $rescue)
-                    : $this->assignValue($key, $value, $rescue)
-            );
+            ->each(function ($value, $key) use ($rescue) {
+                $propertyType = rescue(
+                    callback: fn () => (
+                        new \ReflectionProperty($this, $key)
+                    )->getType()->getName(),
+                    report: false
+                );
+
+                if (is_array($value) && $propertyType !== 'array') {
+                    $this->arrayToProperties($value, $rescue);
+                }
+
+                $this->assignValue($key, $value, $rescue);
+            });
     }
 
     /**
@@ -65,7 +74,7 @@ trait LoopFunctions
     {
         if (property_exists($this, $key)) {
             rescue(
-                fn () => isset($this->{$key}) ?: $this->{$key} = $value,
+                fn () => ! empty($this->{$key}) ?: $this->{$key} = $value,
                 $rescue,
                 config('loop-functions.log') ?? false
             );
