@@ -51,8 +51,8 @@ class AttributeMappingTest extends TestCase
 
         $this->attributesToProperties($model);
 
-        $this->assertFalse((new \ReflectionProperty($this, 'name'))->isInitialized($this));
-        $this->assertFalse((new \ReflectionProperty($this, 'files'))->isInitialized($this));
+        $this->assertFalse(isset($this->name));
+        $this->assertFalse(isset($this->files));
 
         $this->assertInstanceOf(\Closure::class, $this->default);
         $this->assertTrue(($this->default)());

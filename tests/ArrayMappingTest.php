@@ -48,4 +48,19 @@ class ArrayMappingTest extends TestCase
         $this->assertNull($this->password);
         $this->assertStringContainsString('test', $this->next);
     }
+
+    /** @test */
+    public function testAlreadyInitializedPropertiesArentOverridesByNestedArrays()
+    {
+        $array = [
+            'name' => 'Michael Rubel',
+            'additional_data' => [
+                'name' => 'test',
+            ],
+        ];
+
+        $this->arrayToProperties($array);
+
+        $this->assertStringContainsString('Michael', $this->name);
+    }
 }
