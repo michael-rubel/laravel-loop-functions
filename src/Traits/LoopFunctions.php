@@ -65,7 +65,7 @@ trait LoopFunctions
     {
         if (property_exists($this, $key)) {
             rescue(
-                fn () => $this->{$key} = $value,
+                fn () => isset($this->{$key}) ?: $this->{$key} = $value,
                 $rescue,
                 config('loop-functions.log') ?? false
             );
