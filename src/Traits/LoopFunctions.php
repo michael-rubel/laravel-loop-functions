@@ -20,16 +20,14 @@ trait LoopFunctions
      */
     public function attributesToProperties(?Model $model = null, mixed $rescue = null): void
     {
-        if (! is_null($model)) {
-            collect($model->getAttributes())
-                ->except($this->ignoreKeys())
-                ->each(
-                    fn ($value, $property) => $this->assignValue(
-                        $property,
-                        $model->{$property}
-                    )
-                );
-        }
+        collect($model?->getAttributes())
+            ->except($this->ignoreKeys())
+            ->each(
+                fn ($value, $property) => $this->assignValue(
+                    $property,
+                    $model->{$property}
+                )
+            );
     }
 
     /**
