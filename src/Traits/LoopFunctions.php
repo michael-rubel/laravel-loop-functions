@@ -72,7 +72,7 @@ trait LoopFunctions
      */
     private function assignValue(int|string $key, mixed $value, mixed $rescue = null): void
     {
-        if (property_exists($this, $key)) {
+        if (is_string($key) && property_exists($this, $key)) {
             rescue(
                 fn () => ! empty($this->{$key}) ?: $this->{$key} = $value,
                 $rescue,
