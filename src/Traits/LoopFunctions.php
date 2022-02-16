@@ -23,15 +23,12 @@ trait LoopFunctions
         if (! is_null($model)) {
             collect($model->getAttributes())
                 ->except($this->ignoreKeys())
-                ->each(function ($value, $property) use ($model, $rescue) {
-                    if (property_exists($this, $property)) {
-                        rescue(
-                            fn () => $this->{$property} = $model->{$property},
-                            $rescue,
-                            config('loop-functions.log') ?? false
-                        );
-                    }
-                });
+                ->each(
+                    fn ($value, $property) => $this->assignValue(
+                        $property,
+                        $model->{$property}
+                    )
+                );
         }
     }
 
