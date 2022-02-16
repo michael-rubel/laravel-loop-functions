@@ -24,7 +24,7 @@ composer require michael-rubel/laravel-loop-functions
 
 ## Usage
 ```php
-use WithLoopFunctions;
+use LoopFunctions;
 ```
 
 ## Available methods

@@ -4,11 +4,11 @@ namespace MichaelRubel\LoopFunctions\Tests;
 
 use Illuminate\Support\Facades\Log;
 use MichaelRubel\LoopFunctions\Tests\Boilerplate\TestModel;
-use MichaelRubel\LoopFunctions\Traits\WithLoopFunctions;
+use MichaelRubel\LoopFunctions\Traits\LoopFunctions;
 
 class LoggingTest extends TestCase
 {
-    use WithLoopFunctions;
+    use LoopFunctions;
 
     public int $number;
 

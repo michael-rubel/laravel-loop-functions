@@ -4,11 +4,11 @@ namespace MichaelRubel\LoopFunctions\Tests;
 
 use Illuminate\Support\Collection;
 use MichaelRubel\LoopFunctions\Tests\Boilerplate\TestModel;
-use MichaelRubel\LoopFunctions\Traits\WithLoopFunctions;
+use MichaelRubel\LoopFunctions\Traits\LoopFunctions;
 
 class AttributeMappingTest extends TestCase
 {
-    use WithLoopFunctions;
+    use LoopFunctions;
 
     public int $id;
     public bool $test;

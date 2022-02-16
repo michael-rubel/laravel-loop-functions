@@ -2,11 +2,11 @@
 
 namespace MichaelRubel\LoopFunctions\Tests;
 
-use MichaelRubel\LoopFunctions\Traits\WithLoopFunctions;
+use MichaelRubel\LoopFunctions\Traits\LoopFunctions;
 
 class ArrayMappingTest extends TestCase
 {
-    use WithLoopFunctions;
+    use LoopFunctions;
 
     public bool $test;
     public string $name;

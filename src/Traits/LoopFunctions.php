@@ -6,7 +6,7 @@ namespace MichaelRubel\LoopFunctions\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 
-trait WithLoopFunctions
+trait LoopFunctions
 {
     /**
      * Maps your model attributes to local class properties.
