@@ -46,8 +46,8 @@ trait LoopFunctions
         collect($data ?? [])
             ->except($this->ignoreKeys())
             ->each(
-                fn ($value, $key) => is_array($key)
-                    ? $this->arrayToProperties($key, $rescue)
+                fn ($value, $key) => is_array($value)
+                    ? $this->arrayToProperties($value, $rescue)
                     : $this->assignValue($key, $value, $rescue)
             );
     }
