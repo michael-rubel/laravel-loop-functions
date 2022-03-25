@@ -137,5 +137,10 @@ class AttributeMappingTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $this->collection);
         $this->assertIsString($this->intAsString);
+
+        $this->propertiesFrom(null);
+
+        $this->assertInstanceOf(Collection::class, $this->collection);
+        $this->assertIsString($this->intAsString);
     }
 }

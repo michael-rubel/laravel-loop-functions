@@ -115,5 +115,9 @@ class ArrayMappingTest extends TestCase
         $this->propertiesFrom($array);
 
         $this->assertArrayHasKey('next', $this->additional_data);
+
+        $this->propertiesFrom(null);
+
+        $this->assertArrayHasKey('next', $this->additional_data);
     }
 }

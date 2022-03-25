@@ -20,10 +20,12 @@ trait LoopFunctions
      */
     public function propertiesFrom(Model|array|null $data = null, mixed $rescue = null): void
     {
-        match (true) {
-            is_array($data)        => $this->arrayToProperties($data, $rescue),
-            $data instanceof Model => $this->attributesToProperties($data, $rescue),
-        };
+        if ($data) {
+            match (true) {
+                is_array($data)        => $this->arrayToProperties($data, $rescue),
+                $data instanceof Model => $this->attributesToProperties($data, $rescue),
+            };
+        }
     }
 
     /**
