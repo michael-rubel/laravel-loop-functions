@@ -11,6 +11,22 @@ trait LoopFunctions
     use HelpsLoopFunctions;
 
     /**
+     * Choose proper strategy to loop over the data.
+     *
+     * @param Model|array|null $data
+     * @param mixed|null       $rescue
+     *
+     * @return void
+     */
+    public function propertiesFrom(Model|array|null $data = null, mixed $rescue = null): void
+    {
+        match (true) {
+            is_array($data)        => $this->arrayToProperties($data, $rescue),
+            $data instanceof Model => $this->attributesToProperties($data, $rescue),
+        };
+    }
+
+    /**
      * Maps your model attributes to local class properties.
      *
      * @param Model|null $model

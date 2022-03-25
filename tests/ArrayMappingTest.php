@@ -101,4 +101,19 @@ class ArrayMappingTest extends TestCase
         $this->assertArrayHasKey('test', $this->supportCollection->toArray());
         $this->assertTrue($this->supportCollection->toArray()['test']);
     }
+
+    /** @test */
+    public function testCanMapUsingPropertiesFrom()
+    {
+        $array = [
+            'test'            => true,
+            'additional_data' => [
+                'next' => 'test',
+            ],
+        ];
+
+        $this->propertiesFrom($array);
+
+        $this->assertArrayHasKey('next', $this->additional_data);
+    }
 }

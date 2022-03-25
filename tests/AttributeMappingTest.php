@@ -121,4 +121,21 @@ class AttributeMappingTest extends TestCase
         $this->assertFalse((new \ReflectionProperty($this, 'id'))->isInitialized($this));
         $this->assertFalse((new \ReflectionProperty($this, 'password'))->isInitialized($this));
     }
+
+    /** @test */
+    public function testCanMapUsingPropertiesFrom()
+    {
+        $model = new TestModel([
+            'collection' => [
+                0 => true,
+                1 => false,
+            ],
+            'intAsString' => 100,
+        ]);
+
+        $this->propertiesFrom($model);
+
+        $this->assertInstanceOf(Collection::class, $this->collection);
+        $this->assertIsString($this->intAsString);
+    }
 }
