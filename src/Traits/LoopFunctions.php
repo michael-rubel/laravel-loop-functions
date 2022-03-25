@@ -44,7 +44,7 @@ trait LoopFunctions
         collect($data ?? [])
             ->except($this->ignoreKeys())
             ->each(function ($value, $key) use ($rescue) {
-                if ($this->canWalkRecursively($value)) {
+                if ($this->canWalkRecursively($value, $key)) {
                     $this->arrayToProperties($value, $rescue);
                 }
 

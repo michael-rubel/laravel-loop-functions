@@ -19,7 +19,7 @@ trait HelpsLoopFunctions
     {
         if ($this->canAssignValue($key)) {
             rescue(
-                fn () => ! empty($this->{$key}) ?: $this->{$key} = $value,
+                fn () => $this->{$key} = $value,
                 $rescue,
                 config('loop-functions.log') ?? false
             );
@@ -43,13 +43,14 @@ trait HelpsLoopFunctions
     /**
      * Check if the function can walk recursively over an array.
      *
-     * @param mixed $value
+     * @param mixed      $value
+     * @param int|string $key
      *
      * @return bool
      */
-    private function canWalkRecursively(mixed $value): bool
+    private function canWalkRecursively(mixed $value, int|string $key): bool
     {
-        return is_array($value);
+        return is_array($value) && ! empty($this->{$key});
     }
 
     /**

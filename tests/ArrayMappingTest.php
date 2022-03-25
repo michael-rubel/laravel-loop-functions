@@ -13,7 +13,7 @@ class ArrayMappingTest extends TestCase
     public bool $test;
     public string $name;
     public ?string $password = null;
-    public string $next;
+    public array $additional_data = [];
     public array $array = [];
     public ?Collection $supportCollection = null;
     public ?EloquentCollection $eloquentCollection = null;
@@ -51,11 +51,11 @@ class ArrayMappingTest extends TestCase
         $this->assertTrue($this->test);
         $this->assertStringContainsString('Michael', $this->name);
         $this->assertNull($this->password);
-        $this->assertStringContainsString('test', $this->next);
+        $this->assertArrayHasKey('next', $this->additional_data);
     }
 
     /** @test */
-    public function testAlreadyInitializedPropertiesArentOverridesByNestedArrays()
+    public function testAlreadyInitializedPropertiesArentOverridenByNestedArrays()
     {
         $array = [
             'name' => 'Michael Rubel',
