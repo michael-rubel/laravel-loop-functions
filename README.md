@@ -45,7 +45,7 @@ php artisan vendor:publish --tag="loop-functions-config"
 ```
 
 ## Logging
-As the package doesn't throw an exception in case of failed assignment (e.g. type incompatibility) but logs such an event.
+The functions don't throw an exception in case of failed assignment (e.g. type incompatibility) but log such an event.
 You can disable logging for failed assignments if you wish so in the config.
 
 ## Testing
