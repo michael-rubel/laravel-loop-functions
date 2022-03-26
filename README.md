@@ -33,15 +33,20 @@ $this->propertiesFrom($model);
 
 Assign array key values to class properties:
 ```php
-$this->propertiesFrom($this->data);
+$this->propertiesFrom($array);
 ```
 
-## Logging
-As the package doesn't throw an error in case of failed assignment (for example type incompatibility), you may wish to log such an event. The package has failed assignment logging disabled by default, but you can turn it on by publishing the config:
+## Ignored property names
+By default, the package ignores `id` and `password` properties to avoid conflicts in Livewire/auth components.
+You can customize the ignore list by editing the config.
 
 ```bash
 php artisan vendor:publish --tag="loop-functions-config"
 ```
+
+## Logging
+As the package doesn't throw an exception in case of failed assignment (e.g. type incompatibility) but logs such an event.
+You can disable logging for failed assignments if you wish so in the config.
 
 ## Testing
 ```bash
