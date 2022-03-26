@@ -35,7 +35,7 @@ class ArrayMappingTest extends TestCase
     }
 
     /** @test */
-    public function testCanMapAnArrayRecursively()
+    public function testCanMapAnArray()
     {
         $array = [
             'test'     => true,
@@ -63,6 +63,7 @@ class ArrayMappingTest extends TestCase
                 'name' => 'test',
             ],
         ];
+
 
         $this->arrayToProperties($array);
 
@@ -108,7 +109,9 @@ class ArrayMappingTest extends TestCase
         $array = [
             'test'            => true,
             'additional_data' => [
-                'next' => 'test',
+                'next' => [
+                    'test' => true,
+                ],
             ],
         ];
 

@@ -61,12 +61,6 @@ trait LoopFunctions
     {
         collect($data ?? [])
             ->except($this->ignoreKeys())
-            ->each(function ($value, $key) use ($rescue) {
-                if ($this->canWalkRecursively($value, $key)) {
-                    $this->arrayToProperties($value, $rescue);
-                }
-
-                $this->assignValue($key, $value, $rescue);
-            });
+            ->each(fn ($value, $key) => $this->assignValue($key, $value, $rescue));
     }
 }

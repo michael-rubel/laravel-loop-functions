@@ -41,19 +41,6 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * Check if the function can walk recursively over an array.
-     *
-     * @param mixed      $value
-     * @param int|string $key
-     *
-     * @return bool
-     */
-    private function canWalkRecursively(mixed $value, int|string $key): bool
-    {
-        return is_array($value) && ! empty($this->{$key});
-    }
-
-    /**
      * @param int|string $key
      *
      * @return bool
