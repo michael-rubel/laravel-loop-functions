@@ -39,7 +39,7 @@ trait LoopFunctions
     public function attributesToProperties(?Model $model = null, mixed $rescue = null): void
     {
         collect($model?->getAttributes())
-            ->except($this->ignoreKeys())
+            ->except($this->ignoredPropertyNames())
             ->each(
                 fn ($value, $property) => $this->assignValue(
                     $property,
@@ -60,7 +60,7 @@ trait LoopFunctions
     public function arrayToProperties(?array $data, mixed $rescue = null): void
     {
         collect($data ?? [])
-            ->except($this->ignoreKeys())
+            ->except($this->ignoredPropertyNames())
             ->each(fn ($value, $key) => $this->assignValue($key, $value, $rescue));
     }
 }

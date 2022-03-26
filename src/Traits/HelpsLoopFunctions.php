@@ -29,15 +29,9 @@ trait HelpsLoopFunctions
     /**
      * @return array
      */
-    private function ignoreKeys(): array
+    private function ignoredPropertyNames(): array
     {
-        $defaults = ['id', 'password'];
-
-        $ignores = config('loop-functions.ignore_keys', $defaults);
-
-        return is_array($ignores)
-            ? $ignores
-            : $defaults;
+        return config('loop-functions.ignore_keys', ['id', 'password']);
     }
 
     /**
