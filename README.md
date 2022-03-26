@@ -26,15 +26,14 @@ composer require michael-rubel/laravel-loop-functions
 use LoopFunctions;
 ```
 
-## Available methods
 Assign Eloquent model attributes to class properties:
 ```php
-$this->attributesToProperties($model);
+$this->propertiesFrom($model);
 ```
 
 Assign array key values to class properties:
 ```php
-$this->arrayToProperties($data);
+$this->propertiesFrom($this->data);
 ```
 
 ## Logging
