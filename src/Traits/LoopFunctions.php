@@ -103,10 +103,8 @@ trait LoopFunctions
             }
         );
 
-        if ($asCollection) {
-            return $collection;
-        }
-
-        return $collection->all();
+        return ! $asCollection
+            ? $collection->all()
+            : $collection;
     }
 }
