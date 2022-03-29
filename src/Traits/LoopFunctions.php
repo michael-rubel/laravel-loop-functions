@@ -83,8 +83,8 @@ trait LoopFunctions
      */
     public function dumpProperties(
         string|object|null $class = null,
+        bool $asCollection = false,
         ?int $filter = null,
-        bool $asCollection = false
     ): array|Collection {
         $class = match (true) {
             is_string($class) => app($class),
