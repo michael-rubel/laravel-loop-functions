@@ -10,13 +10,25 @@ class ArrayMappingTest extends TestCase
 {
     use LoopFunctions;
 
-    public bool $test;
-    public string $name;
+    public bool $test = false;
+    public ?string $name = null;
     public ?string $password = null;
-    public array $additional_data = [];
-    public array $array = [];
+    public ?array $additional_data = [];
+    public ?array $array = [];
     public ?Collection $supportCollection = null;
     public ?EloquentCollection $eloquentCollection = null;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        unset($this->test);
+        unset($this->name);
+        unset($this->additional_data);
+        unset($this->array);
+        unset($this->supportCollection);
+        unset($this->eloquentCollection);
+    }
 
     /** @test */
     public function testCanMapAnArrayToProperties()
