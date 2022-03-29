@@ -36,6 +36,11 @@ Assign array key values to class properties:
 $this->propertiesFrom($array);
 ```
 
+Dump class properties:
+```php
+$this->dumpProperties();
+```
+
 ## Ignored property names
 By default, the package ignores `id` and `password` properties to avoid conflicts in Livewire/auth components.
 You can customize the ignore list by editing the config.
