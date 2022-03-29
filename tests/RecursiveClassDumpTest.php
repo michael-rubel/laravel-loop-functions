@@ -17,6 +17,8 @@ class RecursiveClassDumpTest extends TestCase
         $this->assertArrayHasKey('array', $properties['array']);
         $this->assertTrue($properties['collection']->isEmpty());
         $this->assertArrayHasKey('static', $properties['static']);
+        $this->assertArrayHasKey('test', $properties['union_type']);
+        $this->assertArrayHasKey('test', $properties['static_union_type']);
 
         $this->assertNull($properties['nullable_string']);
         $this->assertNull($properties['nullable_array']);
