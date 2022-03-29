@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MichaelRubel\LoopFunctions\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 trait LoopFunctions
 {
@@ -75,12 +76,16 @@ trait LoopFunctions
      *
      * @param string|object|null $class
      * @param int|null           $filter
+     * @param bool               $asCollection
      *
-     * @return array
+     * @return array|Collection
      * @throws \ReflectionException
      */
-    public function dumpProperties(string|object|null $class = null, ?int $filter = null): array
-    {
+    public function dumpProperties(
+        string|object|null $class = null,
+        ?int $filter = null,
+        bool $asCollection = false
+    ): array|Collection {
         $class = match (true) {
             is_string($class) => app($class),
             is_object($class) => $class,
@@ -90,10 +95,16 @@ trait LoopFunctions
         $properties = (new \ReflectionClass($class))
             ->getProperties($filter);
 
-        return collect($properties)->mapWithKeys(
+        $collection = collect($properties)->mapWithKeys(
             fn (\ReflectionProperty $property) => [
                 $property->getName() => $property->getValue($class),
             ]
-        )->all();
+        );
+
+        if ($asCollection) {
+            return $collection;
+        }
+
+        return $collection->all();
     }
 }

@@ -33,4 +33,15 @@ class RecursiveClassDumpTest extends TestCase
         $this->assertArrayHasKey('escapeWhenCastingToString', $properties);
         $this->assertFalse($properties['escapeWhenCastingToString']);
     }
+
+    /** @test */
+    public function testCanDumpAsCollection()
+    {
+        $properties = app(TestClass::class)->dumpProperties(
+            class: Collection::class,
+            asCollection: true,
+        );
+
+        $this->assertInstanceOf(Collection::class, $properties);
+    }
 }
