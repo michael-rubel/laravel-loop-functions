@@ -69,4 +69,31 @@ trait LoopFunctions
                 }
             });
     }
+
+    /**
+     * Dump class properties as key-valued array.
+     *
+     * @param string|object|null $class
+     * @param int|null           $filter
+     *
+     * @return array
+     * @throws \ReflectionException
+     */
+    public function dumpProperties(string|object|null $class = null, ?int $filter = null): array
+    {
+        $class = match (true) {
+            is_string($class) => app($class),
+            is_object($class) => $class,
+            default => $this,
+        };
+
+        $properties = (new \ReflectionClass($class))
+            ->getProperties($filter);
+
+        return collect($properties)->mapWithKeys(
+            fn (\ReflectionProperty $property) => [
+                $property->getName() => $property->getValue($class),
+            ]
+        )->all();
+    }
 }
