@@ -62,11 +62,11 @@ trait LoopFunctions
         collect($data ?? [])
             ->except($this->ignoredPropertyNames())
             ->each(function ($value, $key) use ($rescue) {
+                $this->assignValue($key, $value, $rescue);
+
                 if ($this->canWalkRecursively($value)) {
                     $this->propertiesFrom($value, $rescue);
                 }
-
-                $this->assignValue($key, $value, $rescue);
             });
     }
 }
