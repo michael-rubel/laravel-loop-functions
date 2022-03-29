@@ -13,7 +13,7 @@ class RecursiveClassDumpTest extends TestCase
         $properties = app(TestClass::class)->dumpProperties();
 
         $this->assertTrue($properties['bool']);
-        $this->assertStringContainsString( 'new string', $properties['string']);
+        $this->assertStringContainsString('new string', $properties['string']);
         $this->assertArrayHasKey('array', $properties['array']);
         $this->assertTrue($properties['collection']->isEmpty());
         $this->assertArrayHasKey('static', $properties['static']);

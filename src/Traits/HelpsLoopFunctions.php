@@ -63,7 +63,7 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * @param mixed      $value
+     * @param mixed $value
      *
      * @return bool
      */
