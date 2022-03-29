@@ -96,9 +96,11 @@ trait LoopFunctions
             ->getProperties($filter);
 
         $collection = collect($properties)->mapWithKeys(
-            fn (\ReflectionProperty $property) => [
-                $property->getName() => $property->getValue($class),
-            ]
+            function (\ReflectionProperty $property) use ($class) {
+                $property->setAccessible(true);
+
+                return [$property->getName() => $property->getValue($class)];
+            }
         );
 
         if ($asCollection) {
