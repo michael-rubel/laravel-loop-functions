@@ -13,17 +13,17 @@ trait LoopFunctions
     /**
      * Choose proper strategy to loop over the data.
      *
-     * @param Model|array|null $data
-     * @param mixed|null       $rescue
+     * @param Model|\ArrayAccess|array|null $data
+     * @param mixed|null                    $rescue
      *
      * @return void
      */
-    public function propertiesFrom(Model|array|null $data = null, mixed $rescue = null): void
+    public function propertiesFrom(Model|\ArrayAccess|array|null $data = null, mixed $rescue = null): void
     {
         if ($data) {
             match (true) {
-                is_array($data)        => $this->arrayToProperties($data, $rescue),
                 $data instanceof Model => $this->attributesToProperties($data, $rescue),
+                default                => $this->arrayToProperties($data, $rescue),
             };
         }
     }
@@ -52,15 +52,21 @@ trait LoopFunctions
     /**
      * Map array data to class properties.
      *
-     * @param array|null $data
-     * @param mixed|null $rescue
+     * @param array|\ArrayAccess|null $data
+     * @param mixed|null              $rescue
      *
      * @return void
      */
-    public function arrayToProperties(?array $data, mixed $rescue = null): void
+    public function arrayToProperties(array|\ArrayAccess|null $data, mixed $rescue = null): void
     {
         collect($data ?? [])
             ->except($this->ignoredPropertyNames())
-            ->each(fn ($value, $key) => $this->assignValue($key, $value, $rescue));
+            ->each(function ($value, $key) use ($rescue) {
+                if ($this->canWalkRecursively($value)) {
+                    $this->propertiesFrom($value, $rescue);
+                }
+
+                $this->assignValue($key, $value, $rescue);
+            });
     }
 }
