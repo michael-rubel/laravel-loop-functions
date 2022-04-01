@@ -43,9 +43,7 @@ trait HelpsLoopFunctions
      */
     private function canAssignValue(int|string $key): bool
     {
-        return is_string($key)
-            && property_exists($this, $key)
-            && (empty($this->{$key}) || $this->hasDefaultValue($key));
+        return is_string($key) && (empty($this->{$key}) || $this->hasDefaultValue($key));
     }
 
     /**
