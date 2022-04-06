@@ -72,3 +72,6 @@ You can disable exception logging if you wish so in the config.
 ```bash
 composer test
 ```
+
+## License
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
