@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'dynamic_properties' => false,
+    'dynamic_properties' => true,
 
     /*
     |
