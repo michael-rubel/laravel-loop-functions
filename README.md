@@ -26,17 +26,32 @@ composer require michael-rubel/laravel-loop-functions
 use LoopFunctions;
 ```
 
-Assign Eloquent model attributes to class properties:
+#### Assign Eloquent model attributes to class properties:
 ```php
 $this->propertiesFrom($model);
 ```
 
-Assign array key values to class properties:
+#### Assign array key values to class properties:
 ```php
 $this->propertiesFrom($array);
 ```
 
-Dump class properties:
+If you want to use dynamic properties, adjust the `dynamic_properties` key in the config and add the following methods if your class is not already implementing it:
+```php
+public function __get(string $name): mixed
+{
+    return $this->{$name};
+}
+
+public function __set(string $name, $value): void
+{
+    $this->{$name} = $value;
+}
+```
+
+`Note: if you use the Livewire components, it already has similar definitions under the hood.`
+
+#### Dump class properties:
 ```php
 $this->dumpProperties();
 ```
