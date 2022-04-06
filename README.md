@@ -36,7 +36,7 @@ $this->propertiesFrom($model);
 $this->propertiesFrom($array);
 ```
 
-If you want to use dynamic properties, adjust the `dynamic_properties` key in the config and add the following trait if your class is not already implementing the magic methods:
+If you want to use dynamic properties, adjust the `dynamic_properties` key in the config and add the following trait if your class is not already implementing the `get/set` magic methods:
 ```php
 use WithDynamicProperties;
 ```
