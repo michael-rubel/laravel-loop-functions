@@ -2,23 +2,12 @@
 
 namespace MichaelRubel\LoopFunctions\Tests;
 
-use Illuminate\Support\Collection;
-use MichaelRubel\LoopFunctions\Tests\Boilerplate\TestClass;
 use MichaelRubel\LoopFunctions\Traits\LoopFunctions;
+use MichaelRubel\LoopFunctions\Traits\WithDynamicProperties;
 
 class DynamicPropertiesTest extends TestCase
 {
-    use LoopFunctions;
-
-    public function __get(string $name): mixed
-    {
-        return $this->{$name};
-    }
-
-    public function __set(string $name, $value): void
-    {
-        $this->{$name} = $value;
-    }
+    use LoopFunctions, WithDynamicProperties;
 
     /** @test */
     public function testCanUseDynamicProperties()

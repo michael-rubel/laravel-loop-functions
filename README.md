@@ -36,17 +36,9 @@ $this->propertiesFrom($model);
 $this->propertiesFrom($array);
 ```
 
-If you want to use dynamic properties, adjust the `dynamic_properties` key in the config and add the following methods if your class is not already implementing it:
+If you want to use dynamic properties, adjust the `dynamic_properties` key in the config and add the following trait if your class is not already implementing the magic methods:
 ```php
-public function __get(string $name): mixed
-{
-    return $this->{$name};
-}
-
-public function __set(string $name, $value): void
-{
-    $this->{$name} = $value;
-}
+use WithDynamicProperties;
 ```
 
 `Note: if you use the Livewire components, it already has similar definitions under the hood.`
