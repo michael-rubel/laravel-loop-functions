@@ -28,14 +28,6 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * @return array
-     */
-    private function ignoredPropertyNames(): array
-    {
-        return config('loop-functions.ignore_keys', ['id', 'password']);
-    }
-
-    /**
      * @param int|string $key
      *
      * @return bool
@@ -43,7 +35,23 @@ trait HelpsLoopFunctions
      */
     private function canAssignValue(int|string $key): bool
     {
-        return is_string($key) && (empty($this->{$key}) || $this->hasDefaultValue($key));
+        return is_string($key)
+            && $this->checksPropertyExists($key)
+            && (empty($this->{$key}) || $this->hasDefaultValue($key));
+    }
+
+    /**
+     * @param int|string $key
+     *
+     * @return bool
+     */
+    private function checksPropertyExists(int|string $key): bool
+    {
+        if ($this->allowsDynamicProperties()) {
+            return true;
+        }
+
+        return property_exists($this, $key);
     }
 
     /**
@@ -68,5 +76,21 @@ trait HelpsLoopFunctions
     private function canWalkRecursively(mixed $value): bool
     {
         return is_array($value) || $value instanceof \ArrayAccess;
+    }
+
+    /**
+     * @return bool
+     */
+    private function allowsDynamicProperties(): bool
+    {
+        return config('loop-functions.dynamic_properties', true);
+    }
+
+    /**
+     * @return array
+     */
+    private function ignoredPropertyNames(): array
+    {
+        return config('loop-functions.ignore_keys', ['id', 'password']);
     }
 }

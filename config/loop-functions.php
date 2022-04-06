@@ -15,6 +15,14 @@ return [
 
     /*
     |
+    | Determine if you want to allow dynamic properties.
+    |
+    */
+
+    'dynamic_properties' => false,
+
+    /*
+    |
     | Determine if you want to ignore some attributes.
     |
     */
