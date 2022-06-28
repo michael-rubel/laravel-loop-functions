@@ -10,18 +10,25 @@ class TestClass
     use LoopFunctions;
 
     public bool $bool = false;
+
     public string $string = 'string';
+
     public ?string $nullable_string = 'string';
+
     public array $array = [];
+
     public ?array $nullable_array = [];
 
     protected Collection $collection;
+
     protected ?Collection $nullable_collection = null;
 
     private static array $static = [];
+
     private static ?array $nullable_static_array = null;
 
     protected string|array|null $union_type = ['test' => false];
+
     protected static string|array|null $static_union_type = 'test';
 
     public function __construct()

@@ -9,9 +9,9 @@ trait HelpsLoopFunctions
     /**
      * Assign the value to the property or rescue.
      *
-     * @param int|string $key
-     * @param mixed      $value
-     * @param mixed|null $rescue
+     * @param  int|string  $key
+     * @param  mixed  $value
+     * @param  mixed|null  $rescue
      *
      * @return void
      * @throws \ReflectionException
@@ -28,7 +28,7 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * @param int|string $key
+     * @param  int|string  $key
      *
      * @return bool
      * @throws \ReflectionException
@@ -41,7 +41,7 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * @param int|string $key
+     * @param  int|string  $key
      *
      * @return bool
      */
@@ -55,7 +55,7 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * @param int|string $key
+     * @param  int|string  $key
      *
      * @return bool
      * @throws \ReflectionException
@@ -69,7 +69,7 @@ trait HelpsLoopFunctions
     }
 
     /**
-     * @param mixed $value
+     * @param  mixed  $value
      *
      * @return bool
      */

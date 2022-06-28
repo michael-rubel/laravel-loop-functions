@@ -11,13 +11,19 @@ class AttributeMappingTest extends TestCase
     use LoopFunctions;
 
     public int $id;
+
     public bool $test;
+
     public string $name;
+
     public string $password;
+
     public object $files;
 
-    public ?\Closure   $default     = null;
-    public ?Collection $collection  = null;
+    public ?\Closure   $default = null;
+
+    public ?Collection $collection = null;
+
     public ?string     $intAsString = null;
 
     /** @test */
