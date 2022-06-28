@@ -15,9 +15,9 @@ class LoggingTest extends TestCase
     /** @test */
     public function testMapperCanLog()
     {
-        Log::shouldReceive('log')
+        Log::shouldReceive('error')
             ->once()
-            ->withArgs(function ($level, $message) {
+            ->withArgs(function ($message) {
                 return str_contains($message, 'Cannot assign');
             });
 
