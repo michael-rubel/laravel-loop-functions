@@ -5,7 +5,7 @@ namespace MichaelRubel\LoopFunctions\Traits;
 trait WithDynamicProperties
 {
     /**
-     * @param string $name
+     * @param  string  $name
      *
      * @return mixed
      */
@@ -15,8 +15,8 @@ trait WithDynamicProperties
     }
 
     /**
-     * @param string $name
-     * @param mixed  $value
+     * @param  string  $name
+     * @param  mixed  $value
      *
      * @return void
      */

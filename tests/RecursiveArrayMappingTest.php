@@ -10,11 +10,17 @@ class RecursiveArrayMappingTest extends TestCase
     use LoopFunctions;
 
     public bool $test = false;
+
     public ?string $nice = 'no';
+
     public ?string $first_name = null;
+
     public ?string $last_name = null;
+
     public ?string $full_name = null;
+
     public ?array $array = null;
+
     public ?Collection $collection = null;
 
     /** @test */

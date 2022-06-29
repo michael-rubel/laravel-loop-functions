@@ -11,11 +11,17 @@ class ArrayMappingTest extends TestCase
     use LoopFunctions;
 
     public bool $test = false;
+
     public ?string $name = null;
+
     public ?string $password = null;
+
     public ?array $additional_data = [];
+
     public ?array $array = [];
+
     public ?Collection $supportCollection = null;
+
     public ?EloquentCollection $eloquentCollection = null;
 
     public function setUp(): void
@@ -75,7 +81,6 @@ class ArrayMappingTest extends TestCase
                 'name' => 'test',
             ],
         ];
-
 
         $this->arrayToProperties($array);
 

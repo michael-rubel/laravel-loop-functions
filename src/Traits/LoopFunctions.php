@@ -14,8 +14,8 @@ trait LoopFunctions
     /**
      * Choose proper strategy to loop over the data.
      *
-     * @param Model|\ArrayAccess|array|null $data
-     * @param mixed|null                    $rescue
+     * @param  Model|\ArrayAccess|array|null  $data
+     * @param  mixed|null  $rescue
      *
      * @return void
      */
@@ -32,8 +32,8 @@ trait LoopFunctions
     /**
      * Maps your model attributes to local class properties.
      *
-     * @param Model|null $model
-     * @param mixed      $rescue
+     * @param  Model|null  $model
+     * @param  mixed  $rescue
      *
      * @return void
      */
@@ -53,8 +53,8 @@ trait LoopFunctions
     /**
      * Map array data to class properties.
      *
-     * @param array|\ArrayAccess|null $data
-     * @param mixed|null              $rescue
+     * @param  array|\ArrayAccess|null  $data
+     * @param  mixed|null  $rescue
      *
      * @return void
      */
@@ -74,9 +74,9 @@ trait LoopFunctions
     /**
      * Dump class properties as key-valued array.
      *
-     * @param string|object|null $class
-     * @param int|null           $filter
-     * @param bool               $asCollection
+     * @param  string|object|null  $class
+     * @param  int|null  $filter
+     * @param  bool  $asCollection
      *
      * @return array|Collection
      * @throws \ReflectionException
