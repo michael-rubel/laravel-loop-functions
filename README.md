@@ -1,4 +1,4 @@
-![Laravel Loop Functions](https://user-images.githubusercontent.com/37669560/161929110-24850ed8-f630-4528-8819-e426d4fb157f.png)
+![Laravel Loop Functions](https://user-images.githubusercontent.com/37669560/197970105-a3ea9090-ebae-495b-ac13-729b0565d75a.png)
 
 # Laravel Loop Functions
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-loop-functions.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-loop-functions)
