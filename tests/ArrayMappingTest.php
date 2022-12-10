@@ -40,8 +40,8 @@ class ArrayMappingTest extends TestCase
     public function testCanMapAnArrayToProperties()
     {
         $array = [
-            'test'     => true,
-            'name'     => 'Michael Rubel',
+            'test' => true,
+            'name' => 'Michael Rubel',
             'password' => 'p@$$w0rd',
         ];
 
@@ -56,8 +56,8 @@ class ArrayMappingTest extends TestCase
     public function testCanMapAnArray()
     {
         $array = [
-            'test'     => true,
-            'name'     => 'Michael Rubel',
+            'test' => true,
+            'name' => 'Michael Rubel',
             'password' => 'p@$$w0rd',
             'additional_data' => [
                 'next' => 'test',
@@ -124,7 +124,7 @@ class ArrayMappingTest extends TestCase
     public function testCanMapUsingPropertiesFrom()
     {
         $array = [
-            'test'            => true,
+            'test' => true,
             'additional_data' => [
                 'next' => [
                     'test' => true,

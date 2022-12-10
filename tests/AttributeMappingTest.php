@@ -30,9 +30,9 @@ class AttributeMappingTest extends TestCase
     public function testMapsAttributesToClassPropertiesCorrectly()
     {
         $model = new TestModel([
-            'id'    => 1,
-            'test'  => true,
-            'name'  => 'mapped',
+            'id' => 1,
+            'test' => true,
+            'name' => 'mapped',
             'files' => collect('/img/src/screen.png'),
         ]);
 
@@ -48,10 +48,10 @@ class AttributeMappingTest extends TestCase
     public function testMappingIgnoresDifferentTypes()
     {
         $model = new TestModel([
-            'id'      => 1,
-            'test'    => true,
-            'name'    => 100.1,
-            'files'   => null,
+            'id' => 1,
+            'test' => true,
+            'name' => 100.1,
+            'files' => null,
             'default' => fn () => true,
         ]);
 
@@ -68,7 +68,7 @@ class AttributeMappingTest extends TestCase
     public function testMappingWorksWithCollections()
     {
         $model = new TestModel([
-            'id'         => 1,
+            'id' => 1,
             'collection' => new Collection(),
         ]);
 
@@ -98,9 +98,9 @@ class AttributeMappingTest extends TestCase
     public function testIdAndPasswordIsIgnored()
     {
         $model = new TestModel([
-            'id'       => 1,
+            'id' => 1,
             'password' => 'hash',
-            'test'     => true,
+            'test' => true,
         ]);
 
         $this->attributesToProperties($model);
@@ -116,9 +116,9 @@ class AttributeMappingTest extends TestCase
         config(['loop-functions.ignore_attributes' => 123]);
 
         $model = new TestModel([
-            'id'       => 1,
+            'id' => 1,
             'password' => 'hash',
-            'test'     => true,
+            'test' => true,
         ]);
 
         $this->attributesToProperties($model);

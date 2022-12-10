@@ -16,7 +16,7 @@ class TestModel extends Model
      * @var string[]
      */
     protected $casts = [
-        'collection'  => AsCollection::class,
+        'collection' => AsCollection::class,
         'intAsString' => 'string',
     ];
 }
