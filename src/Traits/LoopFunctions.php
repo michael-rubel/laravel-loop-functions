@@ -24,7 +24,7 @@ trait LoopFunctions
         if ($data) {
             match (true) {
                 $data instanceof Model => $this->attributesToProperties($data, $rescue),
-                default                => $this->arrayToProperties($data, $rescue),
+                default => $this->arrayToProperties($data, $rescue),
             };
         }
     }

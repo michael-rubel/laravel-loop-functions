@@ -29,17 +29,17 @@ class RecursiveArrayMappingTest extends TestCase
         $data = [
             'collection' => collect([
                 'first_name' => 'Michael',
-                'last_name'  => 'Rubel',
+                'last_name' => 'Rubel',
             ]),
-            'last_name'  => 'Rubel',
-            'array'      => [
-                'test'       => true,
-                'full_name'  => 'Michael Rubel',
+            'last_name' => 'Rubel',
+            'array' => [
+                'test' => true,
+                'full_name' => 'Michael Rubel',
                 'first_name' => 'Tester',
-                'last_name'  => 'Field',
-                'nice'       => 'yes',
+                'last_name' => 'Field',
+                'nice' => 'yes',
             ],
-            'nice'       => 'yes',
+            'nice' => 'yes',
         ];
 
         $this->propertiesFrom($data);
