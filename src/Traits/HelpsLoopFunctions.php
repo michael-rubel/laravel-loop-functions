@@ -75,7 +75,7 @@ trait HelpsLoopFunctions
      */
     private function canWalkRecursively(mixed $value): bool
     {
-        return is_array($value) || $value instanceof \ArrayAccess;
+        return is_iterable($value);
     }
 
     /**
