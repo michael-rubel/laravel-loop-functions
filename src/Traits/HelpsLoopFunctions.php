@@ -12,8 +12,8 @@ trait HelpsLoopFunctions
      * @param  int|string  $key
      * @param  mixed  $value
      * @param  mixed|null  $rescue
-     *
      * @return void
+     *
      * @throws \ReflectionException
      */
     private function assignValue(int|string $key, mixed $value, mixed $rescue = null): void
@@ -29,8 +29,8 @@ trait HelpsLoopFunctions
 
     /**
      * @param  int|string  $key
-     *
      * @return bool
+     *
      * @throws \ReflectionException
      */
     private function canAssignValue(int|string $key): bool
@@ -42,7 +42,6 @@ trait HelpsLoopFunctions
 
     /**
      * @param  int|string  $key
-     *
      * @return bool
      */
     private function checksPropertyExists(int|string $key): bool
@@ -56,8 +55,8 @@ trait HelpsLoopFunctions
 
     /**
      * @param  int|string  $key
-     *
      * @return bool
+     *
      * @throws \ReflectionException
      */
     private function hasDefaultValue(int|string $key): bool
@@ -70,7 +69,6 @@ trait HelpsLoopFunctions
 
     /**
      * @param  mixed  $value
-     *
      * @return bool
      */
     private function canWalkRecursively(mixed $value): bool
