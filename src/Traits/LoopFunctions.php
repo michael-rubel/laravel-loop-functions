@@ -16,7 +16,6 @@ trait LoopFunctions
      *
      * @param  Model|\ArrayAccess|array|null  $data
      * @param  mixed|null  $rescue
-     *
      * @return void
      */
     public function propertiesFrom(Model|\ArrayAccess|array|null $data = null, mixed $rescue = null): void
@@ -34,7 +33,6 @@ trait LoopFunctions
      *
      * @param  Model|null  $model
      * @param  mixed  $rescue
-     *
      * @return void
      */
     public function attributesToProperties(?Model $model = null, mixed $rescue = null): void
@@ -55,7 +53,6 @@ trait LoopFunctions
      *
      * @param  array|\ArrayAccess|null  $data
      * @param  mixed|null  $rescue
-     *
      * @return void
      */
     public function arrayToProperties(array|\ArrayAccess|null $data, mixed $rescue = null): void
@@ -77,8 +74,8 @@ trait LoopFunctions
      * @param  string|object|null  $class
      * @param  int|null  $filter
      * @param  bool  $asCollection
-     *
      * @return array|Collection
+     *
      * @throws \ReflectionException
      */
     public function dumpProperties(
